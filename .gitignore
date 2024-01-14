@@ -1,14 +1,9 @@
 # Node.js
 node_modules
-package-lock.json
 
-# Express.js
+# Express.js and React.js
 dist/
 build/
-
-# React.js
-build/
-public/
 
 # MongoDB data directory
 data/
