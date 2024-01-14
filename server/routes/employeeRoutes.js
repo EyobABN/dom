@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
-const Employee = require('../models/employeeModel');
+const Employee = require('../models/employee.model');
 
 // GET all employees
-router.get('/employees', async (req, res) => {
+router.get('', async (req, res) => {
     try {
         const employees = await Employee.find();
         res.json(employees);
@@ -14,7 +14,7 @@ router.get('/employees', async (req, res) => {
 });
 
 // POST a new employee
-router.post('/employees', async (req, res) => {
+router.post('', async (req, res) => {
   const employee = new Employee({
     firstName: req.body.firstName,
     middleName: req.body.middleName,
@@ -32,7 +32,7 @@ router.post('/employees', async (req, res) => {
 });
 
 // GET an employee
-router.get('/employees/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -56,7 +56,7 @@ router.get('/employees/:id', async (req, res) => {
 });
 
 // PUT an employee
-router.put('/employees/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updates = req.body;
@@ -93,7 +93,7 @@ router.put('/employees/:id', async (req, res) => {
 });
 
 // PATCH an employee
-router.patch('/employees/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updates = req.body;
@@ -122,7 +122,7 @@ router.patch('/employees/:id', async (req, res) => {
 });
 
 // DELETE an employee
-router.delete('/employees/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 

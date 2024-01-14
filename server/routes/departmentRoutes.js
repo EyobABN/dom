@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
-const Department = require('../models/departmentModel');
+const Department = require('../models/department.model');
 
 // GET all departments
-router.get('/departments', async (req, res) => {
+router.get('', async (req, res) => {
     try {
         const departments = await Department.find();
         res.json(departments);
@@ -14,7 +14,7 @@ router.get('/departments', async (req, res) => {
 });
 
 // POST a new department
-router.post('/departments', async (req, res) => {
+router.post('', async (req, res) => {
   const department = new Department({
     name: req.body.name,
   });
@@ -28,7 +28,7 @@ router.post('/departments', async (req, res) => {
 });
 
 // GET a department
-router.get('/departments/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -52,7 +52,7 @@ router.get('/departments/:id', async (req, res) => {
 });
 
 // PUT a department
-router.put('/departments/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updates = req.body;
@@ -89,7 +89,7 @@ router.put('/departments/:id', async (req, res) => {
 });
 
 // PATCH a department
-router.patch('/departments/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updates = req.body;
@@ -118,7 +118,7 @@ router.patch('/departments/:id', async (req, res) => {
 });
 
 // DELETE a department
-router.delete('/departments/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
