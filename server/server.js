@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb://localhost:27017/dom');
+mongoose.connect('mongodb://mongo:27017/dom'); // 'mongo' is the service name defined in docker-compose.yml
 
 // Check if the connection is successful
 const db = mongoose.connection;
