@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require ('cors');
+const cors = require ('cors');
 const mongoose = require('mongoose');
 const employeeRoutes = require('./routes/employeeRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
@@ -20,17 +20,13 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
-// Home route redirection
-app.get('/', (req, res) => {
-    res.redirect('/api/employees');
-});
 
 // Define routes
-app.use('/api', employeeRoutes);
-app.use('/api', departmentRoutes);
+app.use('/employees', employeeRoutes);
+app.use('/departments', departmentRoutes);
 
 
 app.listen(PORT, () => {
