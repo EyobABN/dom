@@ -58,7 +58,7 @@ const DepartmentsList = () => {
 							<Container className="d-flex justify-content-end">
 								<Link to="add" className='button'><Button variant="primary">Add Department</Button></Link>
 							</Container>
-							<Table size="sm" striped hover>
+							<Table size="sm" responsive striped>
 								<thead>
 									<tr>
 										<th>Department Name</th>

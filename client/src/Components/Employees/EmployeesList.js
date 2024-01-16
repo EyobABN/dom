@@ -68,7 +68,7 @@ const EmployeesList = () => {
 							<Container className="d-flex justify-content-end">
 								<Link to="add" className='button'><Button variant="primary">Add Employee</Button></Link>
 							</Container>
-							<Table size="sm" striped hover>
+							<Table size="sm" responsive striped>
 								<thead>
 									<tr>
 										<th>First Name</th>
