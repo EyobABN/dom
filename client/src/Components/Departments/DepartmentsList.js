@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from 'react-bootstrap/Spinner';
-import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
-import Modal from 'react-bootstrap/Modal';
+import { Button, Table, Modal, Container, Row, Col } from 'react-bootstrap';
+import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 
@@ -14,6 +12,7 @@ const DepartmentsList = () => {
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [departmentToDeleteId, setDepartmentToDeleteId] = useState(null);
 
+	// GET departments and employees once component mounts
 	useEffect(() => {
 		axios.get('http://localhost:5000/departments')
 			.then(response => {
@@ -26,6 +25,7 @@ const DepartmentsList = () => {
 			});
 	}, []);
 
+	// Handle department deletion
 	const handleDelete = (id) => {
 		setDepartmentToDeleteId(id);
 		setShowDeleteConfirmation(true);
@@ -48,16 +48,16 @@ const DepartmentsList = () => {
 	}
 
 	return (
-		<div>
-			<Link to="add" className='button'><Button variant="secondary" style={{margin: "5px 5px"}}>Add Department</Button></Link>
+		<Container className="p-3">
 			{
 				loadingDepartments ?
-					<Spinner animation="border" role="status">
-						<span className="visually-hidden">Loading...</span>
-					</Spinner> :
+					<Spinner /> :
 					departmentsError ?
 						<Alert variant='danger'>Error fetching resources.</Alert> :
 						<>
+							<Container className="d-flex justify-content-end">
+								<Link to="add" className='button'><Button variant="primary">Add Department</Button></Link>
+							</Container>
 							<Table size="sm" striped hover>
 								<thead>
 									<tr>
@@ -95,7 +95,7 @@ const DepartmentsList = () => {
 							</Modal>
 						</>
 			}
-		</div>
+		</Container>
 	);
 };
 

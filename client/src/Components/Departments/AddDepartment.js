@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
+import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -38,24 +37,27 @@ const AddDepartment = () => {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="name">
-        <Form.Label>Department Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter department name"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          required
-        />
-      </Form.Group>
+    <Container className="p-3">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="name">
+          <Form.Label>Department Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter department name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Add Department
-      </Button>
-      <Link to="/departments"><Button variant="secondary">Cancel</Button></Link>
-    </Form>
+        <Button variant="primary" type="submit" className="me-2 mt-2">
+          Add Department
+        </Button>
+        <Link to="/departments"><Button variant="secondary" className="me-2 mt-2">Cancel</Button></Link>
+      </Form>
+    </Container>
+    
   );
 };
 

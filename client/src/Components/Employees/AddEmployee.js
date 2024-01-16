@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -55,75 +55,77 @@ const AddEmployee = () => {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="firstName">
-        <Form.Label>First Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter first name"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleInputChange}
-          required
-        />
-      </Form.Group>
+    <Container className="p-3">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="firstName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter first name"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="middleName">
-        <Form.Label>Middle Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter middle name"
-          name="middleName"
-          value={formData.middleName}
-          onChange={handleInputChange}
-        />
-      </Form.Group>
+        <Form.Group controlId="middleName">
+          <Form.Label>Middle Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter middle name"
+            name="middleName"
+            value={formData.middleName}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="lastName">
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter last name"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleInputChange}
-          required
-        />
-      </Form.Group>
+        <Form.Group controlId="lastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter last name"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="email">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-      </Form.Group>
+        <Form.Group controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="department">
-        <Form.Label>Department</Form.Label>
-        <Form.Select
-          name="department"
-          value={formData.department}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="" disabled>Select a department</option>
-          {departments.map((department) => (
-            <option key={department._id} value={department._id}>
-              {department.name}
-            </option>
-          ))}
-        </Form.Select>
-      </Form.Group>
+        <Form.Group controlId="department">
+          <Form.Label>Department</Form.Label>
+          <Form.Select
+            name="department"
+            value={formData.department}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="" disabled>Select a department</option>
+            {departments.map((department) => (
+              <option key={department._id} value={department._id}>
+                {department.name}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Add Employee
-      </Button>
-      <Link to="/employees"><Button variant="secondary">Cancel</Button></Link>
-    </Form>
+        <Button variant="primary" type="submit" className="me-2 mt-2">
+          Add Employee
+        </Button>
+        <Link to="/employees"><Button variant="secondary" className="me-2 mt-2">Cancel</Button></Link>
+      </Form>
+    </Container>
   );
 };
 

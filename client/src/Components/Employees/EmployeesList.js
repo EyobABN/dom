@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from 'react-bootstrap/Spinner';
-import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
-import Modal from 'react-bootstrap/Modal';
+import { Button, Table, Modal, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 import Alert from 'react-bootstrap/Alert';
 
 const EmployeesList = () => {
@@ -60,21 +58,21 @@ const EmployeesList = () => {
 	}
 
 	return (
-		<div>
-			<Link to="add" className='button'><Button variant="secondary" style={{margin: "5px 5px"}}>Add Employee</Button></Link>
+		<Container className="p-3">
 			{
 				loadingEmployees || loadingDepartments ?
-					<Spinner animation="border" role="status">
-						<span className="visually-hidden">Loading...</span>
-					</Spinner> :
+					<Spinner /> :
 					employeesError || departmentsError ?
 						<Alert variant='danger'>Error fetching resources.</Alert> :
 						<>
+							<Container className="d-flex justify-content-end">
+								<Link to="add" className='button'><Button variant="primary">Add Employee</Button></Link>
+							</Container>
 							<Table size="sm" striped hover>
 								<thead>
-									<tr className='text-center'>
+									<tr>
 										<th>First Name</th>
-										<th>Middle Name</th>
+										{/* <th>Middle Name</th> */}
 										<th>Last Name</th>
 										<th>Email</th>
 										<th>Department</th>
@@ -85,10 +83,10 @@ const EmployeesList = () => {
 									{employees.map(employee => (
 										<tr key={employee._id}>
 											<td>{employee.firstName}</td>
-											<td>{employee.middleName}</td>
+											{/* <td>{employee.middleName}</td> */}
 											<td>{employee.lastName}</td>
-											<td>{employee.email}</td>
-											<td>{departments.find(dept => dept._id === employee.department)?.name}</td>
+											<td>{employee.email || 'Not provided'}</td>
+											<td>{departments.find(dept => dept._id === employee.department)?.name || 'Not assigned'}</td>
 											<td>
 												<Link to={`edit/${employee._id}`}><Button style={{border: "none"}} variant='outline-primary'>Edit</Button></Link>
 												<Button variant='outline-danger' style={{border: "none"}} onClick={() => handleDelete(employee._id)}>Delete</Button>
@@ -115,7 +113,7 @@ const EmployeesList = () => {
 							</Modal>
 						</>
 			}
-		</div>
+		</Container>
 	);
 };
 
