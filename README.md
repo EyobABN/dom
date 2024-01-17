@@ -38,3 +38,14 @@ docker compose up
 | /employees/:id | PUT | Fully updates the employee with the matching id |
 | /employees/:id | PATCH | Partially updates the employee with the matching id |
 | /employees/:id | DELETE | Deletes the employee with the matching id |
+
+## UI Endpoints
+| Endpoint| Purpose |
+|---------|---------|
+| / | Homepage |
+| /departments | Displays the list of departments |
+| /departments/add | Displays a department creation form |
+| /departments/edit/:id | Displays a department editing form |
+| /employees | Displays the list of employees |
+| /departments/edit/:id | Displays an employee creation form |
+| /departments/edit/:id | Displays an employee editing form |
